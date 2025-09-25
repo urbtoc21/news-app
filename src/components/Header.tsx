@@ -1,26 +1,47 @@
 import { makeStyles } from '@mui/styles'
-import {NavLink} from "react-router";
-import {Button} from "@mui/material";
+import { NavLink } from "react-router";
+import { Button } from "@mui/material";
+import { useLanguage } from "../context/LanguageContext";
 
 function Header() {
-
     const classes = useStyles();
+    const { language } = useLanguage();
 
     return (
         <>
             <div className={classes.header}>
                 <div className={"container"}>
-                    <Button ><NavLink to={"/"} className={classes.header__title} >News App</NavLink></Button>
+                    <Button>
+                        <NavLink to={"/"} className={classes.header__title}>
+                            {language === "de" ? "News App" : "News App"}
+                        </NavLink>
+                    </Button>
                 </div>
                 <div className={"container"}>
-                    <Button ><NavLink to={"/"} className={classes.header__link} style={({ isActive }) => ({
-                            color: isActive ? "black" : "white"})}>News</NavLink></Button>
-                    <Button ><NavLink to={"/categories"} className={classes.header__link} style={({ isActive }) => ({
-                        color: isActive ? "black" : "white"
-                    })}>Categories</NavLink></Button>
+                    <Button>
+                        <NavLink
+                            to={"/"}
+                            className={classes.header__link}
+                            style={({ isActive }) => ({
+                                color: isActive ? "black" : "white"
+                            })}
+                        >
+                            {language === "de" ? "Nachrichten" : "News"}
+                        </NavLink>
+                    </Button>
+                    <Button>
+                        <NavLink
+                            to={"/categories"}
+                            className={classes.header__link}
+                            style={({ isActive }) => ({
+                                color: isActive ? "black" : "white"
+                            })}
+                        >
+                            {language === "de" ? "Kategorien" : "Categories"}
+                        </NavLink>
+                    </Button>
                 </div>
             </div>
-
         </>
     );
 }

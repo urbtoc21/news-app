@@ -4,6 +4,7 @@ import News from "./components/News.tsx";
 import Header from "./components/Header.tsx";
 import Categories from "./components/Categories.tsx";
 import {makeStyles} from "@mui/styles";
+import { LanguageProvider } from "./context/LanguageContext";
 
 function App() {
 
@@ -11,13 +12,15 @@ function App() {
 
   return (
     <div className={classes.container}>
-        <BrowserRouter>
-            <Header />
-            <Routes>
-                <Route path={"/"} element={<News />}/>
-                <Route path={"/categories"} element={<Categories />}/>
-            </Routes>
-        </BrowserRouter>
+        <LanguageProvider>
+            <BrowserRouter>
+                <Header />
+                <Routes>
+                    <Route path={"/"} element={<News />}/>
+                    <Route path={"/categories"} element={<Categories />}/>
+                </Routes>
+            </BrowserRouter>
+        </LanguageProvider>
     </div>
   )
 }
