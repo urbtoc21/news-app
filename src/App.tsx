@@ -13,7 +13,7 @@ function App() {
   return (
     <div className={classes.container}>
         <LanguageProvider>
-            <BrowserRouter>
+            <BrowserRouter basename={"/urbi/news-app"}>
                 <Header />
                 <Routes>
                     <Route path={"/"} element={<News />}/>
